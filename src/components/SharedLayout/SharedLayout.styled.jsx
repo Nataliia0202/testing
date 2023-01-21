@@ -22,7 +22,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  min-width: 100%;
+  
   padding: 13px 0;
   background-color: #fff;
 
@@ -39,6 +39,7 @@ export const Logo = styled.p`
 `;
 
 export const ContainerHeder = styled.div`
+  max-width: 100%;
   @media screen and (min-width: 1170px) {
     width: 1170px;
     margin-left: auto;
