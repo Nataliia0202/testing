@@ -1,24 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
-
+import '@fontsource/nunito-sans';
 
 export const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
-        font-family: 'Nunito',
+        font-family: 'Nunito Sans',
         sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        
         background-color: #F8F8F8;
        font-style: normal;
        font-weight: 400px;
         
     }
-    #root {
+    /* #root {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-    }
+    } */
     
     h1,h2,h3,h4,h5,h6,p {
         margin: 0;

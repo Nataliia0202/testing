@@ -31,7 +31,7 @@ export const HeroSection = styled.section`
     height: 650px;
   }
 
-  @media screen and (min-width: 2560px) {
+  @media screen and (min-width: 1170px) {
     background-image: url(${imgDacktopBig});
 
     height: 650px;

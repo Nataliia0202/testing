@@ -1,13 +1,18 @@
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { GlobalStyle } from './GlobalStyles';
 import { Hero } from './Hero/Hero';
-  
+import { FormSubmit } from './Form/Form';  
+import { Container } from './Layout';
   
 export const App = () => {
   return (
     <>
-      <SharedLayout />
-      <Hero/>
+      <Container>
+        <SharedLayout />
+        <Hero />
+        <FormSubmit />
+      </Container>
+
       <GlobalStyle />
     </>
   );

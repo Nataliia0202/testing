@@ -16,29 +16,7 @@ export const NavTitle = styled.button`
   
 `;
 
-export const Container = styled.div`
-  min-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  @media screen and (min-width: 360px) {
-    width: 360px;
-    padding: 0 16px;
-  }
 
-  @media screen and (min-width: 768px) {
-    width: 768px;
-    padding: 0 32px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 1024px;
-    padding: 0 60px;
-  }
-
-  @media screen and (min-width: 2560px) {
-    width: 2560px;
-  }
-`;
 export const Header = styled.header`
   display: flex;
   align-items: center;
@@ -47,6 +25,7 @@ export const Header = styled.header`
   
   padding: 13px 0;
   background-color: #fff;
+  
 
   > nav {
     display: flex;
