@@ -22,10 +22,9 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  
+  min-width: 100%;
   padding: 13px 0;
   background-color: #fff;
-  
 
   > nav {
     display: flex;
@@ -39,3 +38,10 @@ export const Logo = styled.p`
   align-items: center;
 `;
 
+export const ContainerHeder = styled.div`
+  @media screen and (min-width: 1170px) {
+    width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;

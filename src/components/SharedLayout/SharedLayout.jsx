@@ -1,13 +1,13 @@
-import { NavTitle, Header, Logo } from './SharedLayout.styled';
+import { NavTitle, Header, Logo, ContainerHeder } from './SharedLayout.styled';
 import { SvgIcon } from './SvgIcon';
 
 export const SharedLayout = () => {
   return (
     <>
-      
+      <ContainerHeder>
         <Header>
           <Logo>
-            <SvgIcon/>
+            <SvgIcon />
             TESTTASK
           </Logo>
           <nav>
@@ -16,7 +16,7 @@ export const SharedLayout = () => {
             <NavTitle>Sign up</NavTitle>
           </nav>
         </Header>
-      
+      </ContainerHeder>
     </>
   );
 };
