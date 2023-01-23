@@ -3,6 +3,7 @@ import { GlobalStyle } from './GlobalStyles';
 import { Hero } from './Hero/Hero';
 import { FormSubmit } from './Form/Form';  
 import { Container } from './Layout';
+import { Success } from './Success/Success';
   
 export const App = () => {
   return (
@@ -11,8 +12,9 @@ export const App = () => {
         <SharedLayout />
         <Hero />
         <FormSubmit />
+        <Success/>
       </Container>
-
+ 
       <GlobalStyle />
     </>
   );

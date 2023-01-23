@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #F8F8F8;
        font-style: normal;
        font-weight: 400px;
+       padding-bottom: 100px;
         
     }
     /* #root {
