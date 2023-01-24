@@ -15,7 +15,7 @@ export const Avatar = styled.img`
   display: flex;
   max-width: 30%;
   border-radius: 50%;
-  border: 5px dotted black;
+  border: none;
 `;
 export const TitelProfile = styled.p`
   font-size: 16px;
@@ -37,14 +37,26 @@ export const ProfileTel = styled.a`
   text-align: center;
   color: rgba(0, 0, 0, 0.87);
 `;
- export const List = styled.ul`
-   margin: 0;
-   padding: 0;
-   list-style: none;
- `;
+export const List = styled.ul`
+  display: grid;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 140px;
+`;
 
  export const ListItem = styled.li`
-   border-top: 1px solid #2f2f37;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #fff;
+   padding: 20px 20px;
  `;
 
 

@@ -42,6 +42,7 @@ export const HeroSection = styled.section`
   background-position: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 140px;
   overflow: overlay;
   display: block;
   max-width: 1170px;
