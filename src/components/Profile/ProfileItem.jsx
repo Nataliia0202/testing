@@ -1,5 +1,5 @@
 import {
-  WrapperProfile,
+  
   Avatar,
   TitelProfile,
   ProfileEmail,
