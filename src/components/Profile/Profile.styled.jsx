@@ -20,6 +20,8 @@ export const Avatar = styled.img`
 export const TitelProfile = styled.p`
   font-size: 16px;
   line-height: 26px;
+  margin-top: 20px;
+  
   text-align: center;
   color: rgba(0, 0, 0, 0.87);
 `;
@@ -49,6 +51,7 @@ export const List = styled.ul`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 140px;
+  margin-top: 50px;
 `;
 
  export const ListItem = styled.li`
