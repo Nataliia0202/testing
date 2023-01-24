@@ -67,7 +67,7 @@ export const FormSubmit = () => {
             <PhotoFormInput />
           </WrapperPhoto>
 
-          <FormButton>Sign up</FormButton>
+          <FormButton type="submit">Sign up</FormButton>
         </Form>
       </>
     );

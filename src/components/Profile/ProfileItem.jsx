@@ -6,16 +6,16 @@ import {
   ProfileTel,
 } from './Profile.styled';
 
-export const Profile = ({users}) => {
-    return (
-      <>
-        <WrapperProfile>
-          <Avatar src={users.photo} alt="User avatar" />
-          <TitelProfile>{users.name}</TitelProfile>
-          <TitelProfile>{users.position}</TitelProfile>
-          <ProfileEmail>{users.email}</ProfileEmail>
-          <ProfileTel>{users.phone}</ProfileTel>
-        </WrapperProfile>
-      </>
-    );
-}
+export const Profile = ({ photo, name, position, email, phone }) => {
+  return (
+    <>
+      <WrapperProfile>
+        <Avatar src={photo} alt="User avatar" />
+        <TitelProfile>{name}</TitelProfile>
+        <TitelProfile>{position}</TitelProfile>
+        <ProfileEmail>{email}</ProfileEmail>
+        <ProfileTel>{phone}</ProfileTel>
+      </WrapperProfile>
+    </>
+  );
+};

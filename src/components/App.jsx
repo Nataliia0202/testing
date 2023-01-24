@@ -1,7 +1,8 @@
+import React from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { GlobalStyle } from './GlobalStyles';
 import { Hero } from './Hero/Hero';
-import { FormSubmit } from './Form/Form';  
+import { FormSubmit } from './Form/Form';
 import { Container } from './Layout';
 import { Success } from './Success/Success';
 import { useDispatch } from 'react-redux';
@@ -9,27 +10,26 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUsers } from 'redux/operations';
 import { ProfileList } from './Profile/ProfileList';
-  
+
 export const App = () => {
   const dispatch = useDispatch();
   // const users = useSelector(selectUsers);
   // const isLoading = useSelector(selectIsLoading);
-  
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-  
+
   return (
     <>
       <Container>
         <SharedLayout />
         <Hero />
+        <ProfileList />
         <FormSubmit />
         <Success />
-        <ProfileList/>
       </Container>
- 
+
       <GlobalStyle />
     </>
   );

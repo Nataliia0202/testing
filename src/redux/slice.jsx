@@ -18,7 +18,7 @@ const handleError = (state, action) => {
 const UsersSlice = createSlice({
   name: 'users',
   initialState: {
-    users: [],
+    items: [],
     isLoading: false,
     error: null,
   },

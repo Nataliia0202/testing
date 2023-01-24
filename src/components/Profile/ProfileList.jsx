@@ -7,12 +7,25 @@ import { selectUsers } from "redux/selector";
 export const ProfileList = () => {
     
     const users = useSelector(selectUsers);
+
     return (
       <>
-            <List>{users.map((user =>
-            <ListItem key={user.id}>
-                <Profile user={user} />
-            </ListItem>))}
+            <List>
+                {users?.map(({ id, photo, name, position, email, phone }) => {
+              return (
+                <ListItem key={id}>
+                  <Profile
+                    id={id}
+                    photo={photo}
+                    name={name}
+                    position={position}
+                    email={email}
+                    phone={phone}
+                  />
+                </ListItem>
+              );
+            })
+            }
             </List>
       </>
     );
