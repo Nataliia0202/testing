@@ -1,4 +1,4 @@
-import { fetchUsers, addNewUser, togglePosition } from './operations';
+import { fetchUsers, addNewUser } from './operations';
 import { createSlice } from '@reduxjs/toolkit';
 
 const handleRequest = state => {
