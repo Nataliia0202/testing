@@ -8,7 +8,7 @@ import {
   WrapperPhoto,
 } from './Form.styled';
 import { RadioButtons } from "./RadioButtons";
-
+import { useDispatch, useSelector } from 'react-redux';
 
 export const FormSubmit = () => {
     return (
