@@ -1,5 +1,5 @@
 import { Profile } from "./ProfileItem";
-import { List, ListItem } from "./Profile.styled";
+import { List, ListItem} from "./Profile.styled";
 import { useSelector} from 'react-redux';
 import { selectUsers } from "redux/selector";
 import { TitleForm } from 'components/Form/Form.styled';
@@ -38,6 +38,7 @@ export const ProfileList = () => {
             }
           )}
         </List>
+      
       </>
     );
 }

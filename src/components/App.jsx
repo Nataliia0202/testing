@@ -10,8 +10,11 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUsers } from 'redux/operations';
 import { ProfileList } from './Profile/ProfileList';
+import { ButtonLoadMore } from './Profile/ButtonLoadMore';
+
 
 export const App = () => {
+  
   const dispatch = useDispatch();
   // const users = useSelector(selectUsers);
   // const isLoading = useSelector(selectIsLoading);
@@ -20,12 +23,18 @@ export const App = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+ 
+
+
   return (
     <>
       <Container>
         <SharedLayout />
         <Hero />
         <ProfileList />
+        <ButtonLoadMore
+          text="Show more"
+        />
         <FormSubmit />
         <Success />
       </Container>

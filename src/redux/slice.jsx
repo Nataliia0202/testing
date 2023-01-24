@@ -7,7 +7,7 @@ const handleRequest = state => {
 
 const handleSuccess = state => {
   state.isLoading = false;
-  state.error = null;
+    state.error = null;
 };
 
 const handleError = (state, action) => {
@@ -21,6 +21,7 @@ const UsersSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    
   },
 
   extraReducers: {
