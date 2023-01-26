@@ -8,7 +8,7 @@ import { Success } from './Success/Success';
 import { useDispatch } from 'react-redux';
 // import { selectIsLoading,  selectUsers } from 'redux/selector';
 import { useEffect } from 'react';
-import { fetchUsers } from 'redux/operations';
+import { fetchUsers} from 'redux/operations';
 import { ProfileList } from './Profile/ProfileList';
 import { ButtonLoadMore } from './Profile/ButtonLoadMore';
 
@@ -16,6 +16,7 @@ import { ButtonLoadMore } from './Profile/ButtonLoadMore';
 export const App = () => {
   
   const dispatch = useDispatch();
+  
   // const users = useSelector(selectUsers);
   // const isLoading = useSelector(selectIsLoading);
 
@@ -23,7 +24,6 @@ export const App = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
- 
 
 
   return (
@@ -34,6 +34,7 @@ export const App = () => {
         <ProfileList />
         <ButtonLoadMore
           text="Show more"
+          
         />
         <FormSubmit />
         <Success />

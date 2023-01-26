@@ -84,10 +84,13 @@ export const FormButton = styled.button`
   background-color: #b4b4b4;
 `;
 
-export const ButtonInputPhoto = styled.button`
-  display: inline-block;
+export const LabelInputPhoto = styled.label`
+  display: flex;
+  align-items: center;
+  position: absolute;
   width: 83px;
   height: 54px;
+  text-align: center;
   border: 0;
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -113,6 +116,7 @@ export const PhotoFormInput = styled.input`
 `;
 
 export const WrapperPhoto = styled.div`
+position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -121,7 +125,7 @@ export const WrapperPhoto = styled.div`
   max-width: 600px;
   background-color: #fff;
   border-radius: 4px;
-  overflow: hidden;
+  /* overflow: hidden; */
   border: 1px solid #d0cfcf;
   @media screen and (min-width: 768px) {
     width: 380px;

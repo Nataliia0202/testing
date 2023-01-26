@@ -4,11 +4,13 @@ import axios from 'axios';
 axios.defaults.baseURL = "https://frontend-test-assignment-api.abz.agency/api/v1";
 
 export const fetchUsers = createAsyncThunk(
-  'tasks/fetchAll',
-  async (_, thunkAPI) => {
+  'users/fetchAll',
+  async (page = 1, thunkAPI) => {
     try {
-      const response = await axios.get('/users?page=1&count=6');
-      return response.data;
+        const { data } = await axios.get(`/users?page=${page}&count=6`)
+          
+        console.log(data);
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -52,12 +54,13 @@ export const addNewUser = createAsyncThunk(
 
 export const togglePosition = createAsyncThunk(
   'users/togglePosition',
-  async ({ positions }, thunkAPI) => {
+  async (_, thunkAPI) => {
+    
     try {
-      const response = await axios.put(`/positions/${positions.id}`, {
-        position: !positions.id,
-      });
-      return response.data;
+      const { data } = await axios.get(`/positions/`);
+
+      console.log(data);
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
