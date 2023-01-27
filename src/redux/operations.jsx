@@ -19,32 +19,11 @@ export const fetchUsers = createAsyncThunk(
 
 export const addNewUser = createAsyncThunk(
   'users/addNewUser',
-  async (
-    {
-      id,
-      name,
-      email,
-      phone,
-      position,
-      position_id,
-      registration_timestamp,
-      photo,
-    },
-    thunkApi
-  ) => {
+  async (user, thunkApi) => {
     try {
-      const users = await axios.post('/users', {
-        id,
-        name,
-        email,
-        phone,
-        position,
-        position_id,
-        registration_timestamp,
-        photo,
-      });
-
-      return users.data;
+      const users = await axios.post('/users', user);
+      console.log(users);
+      return users;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }

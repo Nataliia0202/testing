@@ -42,7 +42,7 @@ const UsersSlice = createSlice({
       handleRequest(state);
     },
     [addNewUser.fulfilled](state, action) {
-      state.items.push(action.payload);
+      state.items.users.push(action.payload);
       handleSuccess(state, action);
     },
     [addNewUser.rejected](state, action) {
@@ -54,10 +54,10 @@ const UsersSlice = createSlice({
     [togglePosition.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.positions.findIndex(
-        positions => positions.id === action.payload.id
-      );
-      state.positions.splice(index, 1, action.payload);
+      // const index = state.positions.findIndex(
+      //   positions => positions.id === action.payload.id
+      // );
+      // console.log(index)
     },
     [togglePosition.rejected](state, action) {
       handleError(state, action);

@@ -1,3 +1,4 @@
+import React from "react";
 import { TitleForm } from "./Form.styled";
 import {
   Form,
@@ -6,42 +7,53 @@ import {
   LabelInputPhoto,
   PhotoFormInput,
   WrapperPhoto,
+  Wrapper,
+  Text,
+  WrapperRadio,
 } from './Form.styled';
-import { RadioButtons } from "./RadioButtons";
-// import { useDispatch, useSelector } from 'react-redux';
-import { addNewUser } from "redux/operations";
-import { useDispatch} from "react-redux";
-import { useState } from "react";
-// import { selectUsers } from "redux/selector";
 
-export const FormSubmit = ({ positions_id }) => {
+
+import { addNewUser, togglePosition } from 'redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from "react";
+import {  selectPosition } from 'redux/selector';
+
+export const FormSubmit = () => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [photo, setFile] = useState('');
-  // const users = useSelector(selectUsers);
+  const [email, setEmail] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [position, setPosition] = useState({});
+  const positions = useSelector(selectPosition);
+  console.log(positions);
+
+  const handleToggle = () => dispatch(togglePosition(positions));
+
+  
   const dispatch = useDispatch();
+
+  
 
   const onSubmitForm = event => {
     event.preventDefault();
+    const form = event.target;
+    
 
-    const newUser = {
-      name,
-      email,
-      phone,
-      photo,
-    };
+    dispatch(
+      addNewUser({
+        name: name,
+        phone: phone,
+        email: email,
+        photo: photo,
+        position: position,
+      })
+    );
 
-    dispatch(addNewUser(newUser));
-    reset();
+
+    form.reset();
   }
 
-  const reset = () => {
-    setName('');
-    setEmail('');
-    setPhone('');
-    setFile('');
-  };
+  
 
   return (
     <>
@@ -91,7 +103,47 @@ export const FormSubmit = ({ positions_id }) => {
         >
           Select your position
         </p>
-        <RadioButtons />
+        <Wrapper>
+          <WrapperRadio>
+            <input
+              type="radio"
+              name="positions"
+              checked={positions}
+              onChange={() => setPosition(handleToggle)}
+            />
+            <Text>Frontend developer</Text>
+          </WrapperRadio>
+
+          <WrapperRadio>
+            <input
+              type="radio"
+              name="positions"
+              checked={positions}
+              onChange={() => setPosition(handleToggle)}
+            />
+            <Text>Backend developer</Text>
+          </WrapperRadio>
+
+          <WrapperRadio>
+            <input
+              type="radio"
+              name="positions"
+              checked={positions}
+              onChange={() => setPosition(handleToggle)}
+            />
+            <Text>Designer</Text>
+          </WrapperRadio>
+
+          <WrapperRadio>
+            <input
+              type="radio"
+              name="positions"
+              checked={positions}
+              onChange={() => setPosition(handleToggle)}
+            />
+            <Text>QA</Text>
+          </WrapperRadio>
+        </Wrapper>
         <WrapperPhoto>
           <p style={{ marginLeft: 90, color: '#7E7E7E' }}>Upload your photo</p>
           <LabelInputPhoto>
@@ -102,10 +154,9 @@ export const FormSubmit = ({ positions_id }) => {
               type="file"
               name="photo"
               id="uploade-file"
-              placeholder="Upload your photo"
-              style={{ opacity: 0 }}
               value={photo}
-              onChange={event => setFile(event.target.value)}
+              onChange={event => setPhoto(event.target.value)}
+              style={{ opacity: 0 }}
             />
           </LabelInputPhoto>
         </WrapperPhoto>
