@@ -36,10 +36,10 @@ export const togglePosition = createAsyncThunk(
   async (_, thunkAPI) => {
     
     try {
-      const { data } = await axios.get(`/positions/`);
+      const respons = await axios.get(`/positions`);
 
-      console.log(data);
-      return data;
+      console.log(respons.data.positions);
+      return respons.data.positions;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
