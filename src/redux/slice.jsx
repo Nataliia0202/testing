@@ -25,6 +25,7 @@ const UsersSlice = createSlice({
     isLoading: false,
     error: null,
     positions: [],
+    page: 1,
   },
 
   extraReducers: {

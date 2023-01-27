@@ -5,7 +5,7 @@ axios.defaults.baseURL = "https://frontend-test-assignment-api.abz.agency/api/v1
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchAll',
-  async (page = 1, thunkAPI) => {
+  async (page=1, thunkAPI) => {
     try {
         const { data } = await axios.get(`/users?page=${page}&count=6`)
           
