@@ -11,7 +11,7 @@ export const ButtonLoadMore = ({ text }) => {
   
 
   return (
-    <ShowMore type="button" onClick={() => dispatch(fetchUsers(page+1))}>
+    <ShowMore type="button" onClick={() => dispatch(fetchUsers(page))}>
       {text}
     </ShowMore>
   );

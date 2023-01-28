@@ -25,7 +25,7 @@ const UsersSlice = createSlice({
     isLoading: false,
     error: null,
     positions: [],
-    page: 1,
+    page: 0,
   },
 
   extraReducers: {
@@ -34,6 +34,7 @@ const UsersSlice = createSlice({
     },
     [fetchUsers.fulfilled](state, action) {
       state.items = action.payload;
+      state.page +=1
       handleSuccess(state, action);
     },
     [fetchUsers.rejected](state, action) {
