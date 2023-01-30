@@ -22,7 +22,7 @@ export const FormSubmit = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [photo, setPhoto] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
   const [position, setPosition] = useState({});
   const positions = useSelector(selectPosition);
   console.log(positions);
@@ -32,7 +32,10 @@ export const FormSubmit = () => {
   
   const dispatch = useDispatch();
 
-  
+  const handleChange = event => {
+    console.log(event.target.files)
+    setSelectedFile(event.target.files[0]);
+  }
 
   const onSubmitForm = event => {
     event.preventDefault();
@@ -44,7 +47,7 @@ export const FormSubmit = () => {
         name: name,
         phone: phone,
         email: email,
-        photo: photo,
+        photo: selectedFile,
         position: position,
       })
     );
@@ -53,8 +56,9 @@ export const FormSubmit = () => {
     form.reset();
   }
 
-  
-
+  console.log(name)
+  console.log(email);
+  console.log(phone);
   return (
     <>
       <TitleForm>Working with POST request</TitleForm>
@@ -152,11 +156,9 @@ export const FormSubmit = () => {
             </p>
             <PhotoFormInput
               type="file"
-              name="photo"
-              id="uploade-file"
-              value={photo}
-              onChange={event => setPhoto(event.target.value)}
-              style={{ opacity: 0 }}
+              accept="image/*,.png,.jpg,.gif,.web" 
+              onChange={handleChange}
+              style={{ opacity: 0, height: 0, width: 0, lineHeight:0, overflow: 'hidden', padding: 0, margin: 0 }}
             />
           </LabelInputPhoto>
         </WrapperPhoto>
