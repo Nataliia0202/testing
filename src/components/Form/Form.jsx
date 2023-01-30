@@ -8,7 +8,7 @@ import {
   PhotoFormInput,
   WrapperPhoto,
   Wrapper,
-  Text,
+ 
   WrapperRadio,
 } from './Form.styled';
 
@@ -16,7 +16,10 @@ import {
 import { addNewUser, togglePosition } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useRef } from "react";
-import {  selectPosition } from 'redux/selector';
+import { selectPosition } from 'redux/selector';
+import { RadioBatton } from "./RadioBatton";
+import { useEffect } from "react";
+
 
 export const FormSubmit = () => {
   const [name, setName] = useState('');
@@ -24,12 +27,8 @@ export const FormSubmit = () => {
   const [email, setEmail] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const filePicker = useRef(null)
-  const [position, setPosition] = useState({});
-  const positions = useSelector(selectPosition);
   
-
-  const handleToggle = () => dispatch(togglePosition(positions));
-
+  const allradioButton = useSelector(selectPosition);
   
   const dispatch = useDispatch();
 
@@ -60,14 +59,16 @@ export const FormSubmit = () => {
         phone: phone,
         email: email,
         photo: selectedFile,
-        position: position,
+        
       })
     );
 
 
     form.reset();
   }
-
+  useEffect(() => {
+  dispatch(togglePosition());
+}, [dispatch]);
   
   return (
     <>
@@ -118,45 +119,14 @@ export const FormSubmit = () => {
           Select your position
         </p>
         <Wrapper>
-          <WrapperRadio>
-            <input
-              type="radio"
-              name="positions"
-              checked={positions}
-              onChange={() => setPosition(handleToggle)}
-            />
-            <Text>Frontend developer</Text>
-          </WrapperRadio>
-
-          <WrapperRadio>
-            <input
-              type="radio"
-              name="positions"
-              checked={positions}
-              onChange={() => setPosition(handleToggle)}
-            />
-            <Text>Backend developer</Text>
-          </WrapperRadio>
-
-          <WrapperRadio>
-            <input
-              type="radio"
-              name="positions"
-              checked={positions}
-              onChange={() => setPosition(handleToggle)}
-            />
-            <Text>Designer</Text>
-          </WrapperRadio>
-
-          <WrapperRadio>
-            <input
-              type="radio"
-              name="positions"
-              checked={positions}
-              onChange={() => setPosition(handleToggle)}
-            />
-            <Text>QA</Text>
-          </WrapperRadio>
+          {allradioButton.map(({ id, name }) => {
+            return (
+              <WrapperRadio key={id}>
+                <RadioBatton id={id} name={name} />
+              </WrapperRadio>
+            )
+          })}
+          
         </Wrapper>
         <WrapperPhoto>
           {selectedFile ? (

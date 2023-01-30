@@ -50,7 +50,7 @@ export const FormInput = styled.input`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.ul`
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -59,13 +59,13 @@ export const Wrapper = styled.div`
   flex-flow: column wrap;
 `;
 
-export const Text = styled.p`
+export const Text = styled.label`
   flex-grow: 1;
   font-size: 16px;
   line-height: 26px;
   margin-left:12px
 `;
-export const WrapperRadio = styled.div`
+export const WrapperRadio = styled.li`
     display: flex;
  `;
 

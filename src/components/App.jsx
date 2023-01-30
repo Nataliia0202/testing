@@ -24,8 +24,6 @@ export const App = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-
-
   return (
     <>
       <Container>

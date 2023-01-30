@@ -56,6 +56,7 @@ const UsersSlice = createSlice({
     [togglePosition.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
+      state.positions = action.payload;
       // const index = state.positions.findIndex(
       //   positions => positions.id === action.payload.id
       // );
