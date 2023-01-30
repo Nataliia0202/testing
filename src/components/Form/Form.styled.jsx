@@ -84,7 +84,7 @@ export const FormButton = styled.button`
   background-color: #b4b4b4;
 `;
 
-export const LabelInputPhoto = styled.label`
+export const LabelInputPhoto = styled.button`
   display: flex;
   align-items: center;
   position: absolute;

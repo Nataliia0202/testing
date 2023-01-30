@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
-// export const WrapperProfile = styled.div`
-//   max-width: 50%;
-//   margin-top: 5vh;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-//   border-radius: 0.5rem;
-// `;
+
 
 
 export const Avatar = styled.img`

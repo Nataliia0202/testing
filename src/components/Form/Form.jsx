@@ -15,7 +15,7 @@ import {
 
 import { addNewUser, togglePosition } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {  selectPosition } from 'redux/selector';
 
 export const FormSubmit = () => {
@@ -23,6 +23,7 @@ export const FormSubmit = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const filePicker = useRef(null)
   const [position, setPosition] = useState({});
   const positions = useSelector(selectPosition);
   
@@ -37,10 +38,21 @@ export const FormSubmit = () => {
     setSelectedFile(event.target.files[0]);
   }
 
+  const handlePick = () => {
+    filePicker.current.click();
+  }
+
   const onSubmitForm = event => {
     event.preventDefault();
     const form = event.target;
     
+    
+    if (!selectedFile) {
+      alert('Please select a file');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('file', selectedFile);
 
     dispatch(
       addNewUser({
@@ -147,18 +159,34 @@ export const FormSubmit = () => {
           </WrapperRadio>
         </Wrapper>
         <WrapperPhoto>
-          <p style={{ marginLeft: 90, color: '#7E7E7E' }}>Upload your photo</p>
-          <LabelInputPhoto>
-            <p style={{ marginLeft: 12, color: 'rgba(0, 0, 0, 0.87)' }}>
-              Upload
+          {selectedFile ? (
+            <p style={{ marginLeft: 90, color: '#7E7E7E' }}>
+              {selectedFile.name}
             </p>
-            <PhotoFormInput
-              type="file"
-              accept="image/*,.png,.jpg,.gif,.web" 
-              onChange={handleChange}
-              style={{ opacity: 0, height: 0, width: 0, lineHeight:0, overflow: 'hidden', padding: 0, margin: 0 }}
-            />
+          ) : (
+            <p style={{ marginLeft: 90, color: '#7E7E7E' }}>
+              Upload your photo
+            </p>
+          )}
+          <LabelInputPhoto type="button" onClick={handlePick}>
+            Upload
           </LabelInputPhoto>
+
+          <PhotoFormInput
+            type="file"
+            accept="image/*,.png,.jpg,.gif,.web"
+            onChange={handleChange}
+            ref={filePicker}
+            style={{
+              opacity: 0,
+              height: 0,
+              width: 0,
+              lineHeight: 0,
+              overflow: 'hidden',
+              padding: 0,
+              margin: 0,
+            }}
+          />
         </WrapperPhoto>
 
         <FormButton type="submit">Sign up</FormButton>
