@@ -25,7 +25,7 @@ export const FormSubmit = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [position, setPosition] = useState({});
   const positions = useSelector(selectPosition);
-  console.log(positions);
+  
 
   const handleToggle = () => dispatch(togglePosition(positions));
 
@@ -56,9 +56,7 @@ export const FormSubmit = () => {
     form.reset();
   }
 
-  console.log(name)
-  console.log(email);
-  console.log(phone);
+  
   return (
     <>
       <TitleForm>Working with POST request</TitleForm>
