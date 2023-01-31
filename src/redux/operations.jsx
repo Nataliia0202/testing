@@ -46,9 +46,9 @@ export const getToken = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const respons = await axios.get('/token');
-      console.log(respons.data);
+      console.log(respons.data.token);
       
-      return respons.data;
+      return respons.data.token;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -60,8 +60,7 @@ export const addNewUser = createAsyncThunk(
   async (user, thunkApi) => {
     try {
       const users = await axios.post('/users', user);
-      console.log(users);
-      getToken(users.token);
+      console.log(users.data);
       return users;
     } catch (error) {
       return thunkApi.rejectWithValue(error);

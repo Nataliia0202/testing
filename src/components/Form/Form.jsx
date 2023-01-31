@@ -29,7 +29,7 @@ export const FormSubmit = () => {
   const filePicker = useRef(null);
   const userToken = useSelector(selectUsers);
   const allradioButton = useSelector(selectPosition);
-
+  // const [uploaded, setUploaded] = useState(null);
   const dispatch = useDispatch();
 
   const [topping, setTopping] = useState(null);
@@ -58,12 +58,15 @@ export const FormSubmit = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
 
+   
+
     dispatch(
       addNewUser({
         name: name,
         phone: phone,
         email: email,
         photo: formData,
+        position_id: topping,
       })
     );
     dispatch(getToken(userToken));
