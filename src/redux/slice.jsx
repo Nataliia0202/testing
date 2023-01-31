@@ -1,4 +1,4 @@
-import { fetchUsers, addNewUser, togglePosition } from './operations';
+import { fetchUsers, addNewUser, togglePosition, getToken } from './operations';
 import { createSlice } from '@reduxjs/toolkit';
 
 const handleRequest = state => {
@@ -26,6 +26,7 @@ const UsersSlice = createSlice({
     error: null,
     positions: [],
     page: 0,
+    token: null,
   },
 
   extraReducers: {
@@ -45,11 +46,17 @@ const UsersSlice = createSlice({
     },
     [addNewUser.fulfilled](state, action) {
       state.items.users.push(action.payload);
+      state.token = action.payload.token;  
       handleSuccess(state, action);
     },
     [addNewUser.rejected](state, action) {
       handleError(state, action);
     },
+
+    [getToken.fulfilled](state, action) {
+      state.token = action.payload.token;  
+    },
+
     [togglePosition.pending](state) {
       handleRequest(state);
     },
@@ -57,10 +64,10 @@ const UsersSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.positions = action.payload;
-      // const index = state.positions.findIndex(
-      //   positions => positions.id === action.payload.id
-      // );
-      // console.log(index)
+      const index = state.positions.findIndex(
+        position => position.id === action.payload.id
+      );
+      console.log(index)
     },
     [togglePosition.rejected](state, action) {
       handleError(state, action);

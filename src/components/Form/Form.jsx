@@ -13,10 +13,10 @@ import {
 } from './Form.styled';
 
 
-import { addNewUser, togglePosition } from 'redux/operations';
+import { addNewUser, togglePosition, getToken } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useRef } from "react";
-import { selectPosition } from 'redux/selector';
+import { selectPosition, selectUsers } from 'redux/selector';
 import { RadioBatton } from "./RadioBatton";
 import { useEffect } from "react";
 
@@ -26,26 +26,31 @@ export const FormSubmit = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const filePicker = useRef(null)
-  
+  const filePicker = useRef(null);
+  const userToken = useSelector(selectUsers);
   const allradioButton = useSelector(selectPosition);
-  
+
   const dispatch = useDispatch();
 
+  const [topping, setTopping] = useState(null);
+
+  const onOptionChange = e => {
+    setTopping(e.target.value);
+  };
+
   const handleChange = event => {
-    console.log(event.target.files)
+    console.log(event.target.files);
     setSelectedFile(event.target.files[0]);
-  }
+  };
 
   const handlePick = () => {
     filePicker.current.click();
-  }
+  };
 
   const onSubmitForm = event => {
     event.preventDefault();
     const form = event.target;
-    
-    
+
     if (!selectedFile) {
       alert('Please select a file');
       return;
@@ -58,18 +63,17 @@ export const FormSubmit = () => {
         name: name,
         phone: phone,
         email: email,
-        photo: selectedFile,
-        
+        photo: formData,
       })
     );
-
+    dispatch(getToken(userToken));
 
     form.reset();
-  }
+  };
   useEffect(() => {
-  dispatch(togglePosition());
-}, [dispatch]);
-  
+    dispatch(togglePosition());
+  }, [dispatch]);
+
   return (
     <>
       <TitleForm>Working with POST request</TitleForm>
@@ -97,8 +101,8 @@ export const FormSubmit = () => {
         <FormInput
           type="tel"
           name="phone"
-          placeholder="Phon"
-          pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"
+          placeholder="Phone"
+          pattern="^[\+]{0,1}380([0-9]{9})$"
           minlength="13"
           maxlength="13"
           autocomplete="off"
@@ -122,11 +126,16 @@ export const FormSubmit = () => {
           {allradioButton.map(({ id, name }) => {
             return (
               <WrapperRadio key={id}>
-                <RadioBatton id={id} name={name} />
+                <RadioBatton
+                  id={id}
+                  name={name}
+                  value={name}
+                  checked={topping === name}
+                  onChange={onOptionChange}
+                />
               </WrapperRadio>
-            )
+            );
           })}
-          
         </Wrapper>
         <WrapperPhoto>
           {selectedFile ? (

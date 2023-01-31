@@ -17,18 +17,11 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-export const addNewUser = createAsyncThunk(
-  'users/addNewUser',
-  async (user, thunkApi) => {
-    try {
-      const users = await axios.post('/users', user);
-      console.log(users);
-      return users;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error);
-    }
-  }
-);
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+
+
 
 
 export const togglePosition = createAsyncThunk(
@@ -42,6 +35,36 @@ export const togglePosition = createAsyncThunk(
       return respons.data.positions;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+
+
+export const getToken = createAsyncThunk(
+  'token/getToken',
+  async (_, thunkAPI) => {
+    try {
+      const respons = await axios.get('/token');
+      console.log(respons.data);
+      
+      return respons.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+)
+
+export const addNewUser = createAsyncThunk(
+  'users/addNewUser',
+  async (user, thunkApi) => {
+    try {
+      const users = await axios.post('/users', user);
+      console.log(users);
+      getToken(users.token);
+      return users;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
