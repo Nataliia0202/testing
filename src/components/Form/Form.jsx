@@ -57,16 +57,16 @@ export const FormSubmit = () => {
     }
     const formData = new FormData();
     formData.append('file', selectedFile);
-
-   
+    formData.append('position_id', 2);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('photo', handleChange);
 
     dispatch(
       addNewUser({
-        name: name,
-        phone: phone,
-        email: email,
-        photo: formData,
-        position_id: topping,
+        
+        body: formData
       })
     );
     dispatch(getToken(userToken));
@@ -80,7 +80,7 @@ export const FormSubmit = () => {
   return (
     <>
       <TitleForm>Working with POST request</TitleForm>
-      <Form onSubmit={onSubmitForm}>
+      <Form onSubmit={onSubmitForm} enctype="multipart/form-data">
         <FormInput
           type="text"
           name="name"

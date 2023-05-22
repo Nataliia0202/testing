@@ -35,7 +35,7 @@ const UsersSlice = createSlice({
     },
     [fetchUsers.fulfilled](state, action) {
       state.items = action.payload;
-      state.page +=1
+      state.page += 1;
       handleSuccess(state, action);
     },
     [fetchUsers.rejected](state, action) {
@@ -46,15 +46,23 @@ const UsersSlice = createSlice({
     },
     [addNewUser.fulfilled](state, action) {
       state.items.users.push(action.payload);
-      state.token = action.payload.token;  
+      state.token = action.payload.token;
       handleSuccess(state, action);
     },
     [addNewUser.rejected](state, action) {
       handleError(state, action);
     },
 
+    [getToken.pending](state) {
+      handleRequest(state);
+    },
+
     [getToken.fulfilled](state, action) {
-      state.token = action.payload.token;  
+      state.token = action.payload.token;
+    },
+
+    [getToken.rejected](state, action) {
+      handleError(state, action);
     },
 
     [togglePosition.pending](state) {
@@ -67,7 +75,8 @@ const UsersSlice = createSlice({
       const index = state.positions.findIndex(
         position => position.id === action.payload.id
       );
-      console.log(index)
+
+      console.log(index);
     },
     [togglePosition.rejected](state, action) {
       handleError(state, action);

@@ -55,13 +55,35 @@ export const getToken = createAsyncThunk(
   }
 )
 
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+
+// export const register = createAsyncThunk(
+//   'auth/register',
+//   async (credentials, thunkAPI) => {
+//     try {
+//       const res = await axios.post('/users/tokin', credentials);
+//       // After successful registration, add the token to the HTTP header
+//       setAuthHeader(res.data.token);
+//       return res.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const addNewUser = createAsyncThunk(
   'users/addNewUser',
   async (user, thunkApi) => {
     try {
-      const users = await axios.post('/users', user);
-      console.log(users.data);
-      return users;
+      const resp = await axios.post('/users', {
+        headers: getToken(),
+        user,
+      });
+      console.log(resp.data);
+      // setAuthHeader(resp.data.token);
+      return resp.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
